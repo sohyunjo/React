@@ -15,5 +15,5 @@ const person = (props) => {
 //         return <p>My name is {this.props}</p>
 //     }
 // }
-
+ 
 export default person;

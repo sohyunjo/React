@@ -8,7 +8,8 @@ class App extends Component {
             {name: 'Max', age: 18},
             {name: 'Nana', age:20},
             {name: 'Steph', age:10}
-        ]
+        ],
+        showPersons:false
     }
 
     switchNameHandler = (newName) => {
@@ -31,6 +32,11 @@ class App extends Component {
         })
     }
 
+    togglePersonsHandler = () => {
+        const doesShow = this.state.showPersons;
+        this.setState({showPersons: !doesShow});
+    }
+
   render() {
 
       const style={
@@ -40,12 +46,15 @@ class App extends Component {
         padding:'8px',
         cursor:'pointer'
       };
+
     return (
       <div className="App">
         <h1>hello</h1>
         <button
             style={style}
-            onClick={this.switchNameHandler.bind(this, 'Max!!!!')}>Swich name</button>
+            onClick={this.togglePersonsHandler}>Swich name</button>
+        { this.state.showPersons ?
+            <div>
         <Person
             name={this.state.persons[0].name}
             age={this.state.persons[0].age}>hobbies: racing</Person>
@@ -58,6 +67,8 @@ class App extends Component {
         <Person
             name={this.state.persons[2].name}
             age={this.state.persons[2].age}/>
+    </div> :null
+}
       </div>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'work'))
